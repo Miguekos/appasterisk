@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Campa;
+use Faker\Provider\Company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -29,7 +31,8 @@ class HomeController extends Controller
 
     public function lista()
     {
-        $lista = $results = DB::select('select * from pg_catalog.pg_namespace');
+//        $lista = $results = DB::select('select * from pg_catalog.pg_namespace');
+        $lista = Campa::all();
         return view('lista',compact('lista'));
 //        dd($lista);
     }

@@ -14,9 +14,9 @@
                     <tbody>
                     @foreach($lista as $listas)
                         <tr>
-                            <th>{{ $listas->nspname }}</th>
+                            <th>{{ $listas->namedb }}</th>
                             <th>
-                                <a class="btn btn-sm btn-warning" href="{{ route('mostrar',$listas->nspname) }}">Ver</a>
+                                <a class="btn btn-sm btn-warning" href="{{ route('mostrar',$listas->namedb) }}">Ver</a>
                             </th>
                         </tr>
                     @endforeach

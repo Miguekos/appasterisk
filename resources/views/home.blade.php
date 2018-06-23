@@ -15,9 +15,18 @@
                     {{ csrf_field() }}
                     <div class="panel-body">
 
+                        @if (count($errors) > 0)
+                            <div class = "alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>El nombre de la campaña ya existe..!!</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
 
                         <label for="">Nombre de la campaña</label>
-                        <input type="text" name="namedb" class="form-control">
+                        <input type="text" autofocus name="namedb" class="form-control">
 
                         <label for="">Nombre del csv</label>
                         <input type="text" name="namecsv" class="form-control">
@@ -34,4 +43,5 @@
         </div>
     </div>
 </div>
+
 @endsection
