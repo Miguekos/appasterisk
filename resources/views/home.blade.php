@@ -11,7 +11,7 @@
                         {{ session('status') }}
                     </div>
                 @endif
-                <form action="{{ route('import') }}" method="post">
+                <form action="{{ route('import') }}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="panel-body">
 
@@ -28,11 +28,8 @@
                         <label for="">Nombre de la campaña</label>
                         <input type="text" autofocus name="namedb" class="form-control">
 
-                        <label for="">Nombre del csv</label>
-                        <input type="text" name="namecsv" class="form-control">
-
                         <label for="">Subir Campaña</label>
-                        <input type="file" name="" class="form-control">
+                        <input type="file" name="archivo" class="form-control">
                     </div>
                     <div class="panel-footer">
                         <input class="btn btn-success" type="submit" value="Subir">

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use App\Campa;
 use Faker\Provider\Company;
 use Illuminate\Http\Request;
@@ -45,5 +47,7 @@ class HomeController extends Controller
         return view('mostrar',compact('lista','title'));
 //        dd($lista);
     }
+
+
 
 }

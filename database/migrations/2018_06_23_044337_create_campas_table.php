@@ -16,6 +16,7 @@ class CreateCampasTable extends Migration
         Schema::create('campas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('namedb');
+            $table->string('archivo');
             $table->timestamps();
         });
     }

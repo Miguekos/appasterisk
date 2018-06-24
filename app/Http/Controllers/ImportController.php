@@ -17,6 +17,11 @@ class ImportController extends Controller
 {
     public function import(Request $request)
     {
+        if ($request->hasFile('archivo')){
+            $file = $request->file('archivo');
+            $name = time().$file->getClientOriginalName();
+            $file->move(public_path().'/csv/', $name);
+//            return $name;
 
         $validator = Validator::make($request->all(), [
             'namedb' => 'unique:campas',
@@ -26,6 +31,7 @@ class ImportController extends Controller
 
                 $campa = new Campa;
                 $campa->namedb = $request->namedb;
+                $campa->archivo = $name;
                 $campa->save();
 
                 $namedb = $request->get("namedb");
@@ -39,7 +45,7 @@ class ImportController extends Controller
                     $table->integer('id');
                 });
 
-              	Excel::load("../csv/".$request->get("namecsv"), function($reader) use ($nametb, $namedb) {
+              	Excel::load(public_path()."/csv/".$name, function($reader) use ($nametb, $namedb) {
 
                		foreach ($reader->get() as $asterisk) {
 
@@ -52,6 +58,10 @@ class ImportController extends Controller
                     ->withErrors($validator)
                     ->withInput();
             }
+
+        }else{
+            return "No es un archivo";
         }
+    }
 
 }
