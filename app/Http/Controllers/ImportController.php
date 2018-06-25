@@ -47,17 +47,15 @@ class ImportController extends Controller
 
                 PGSchema::create($schemaName = $namedb, $databaseName = null);
                 Schema::create($namedb.".".$nametb, function (Blueprint $table) {
-                    $table->string('cod_cliente');
-                    $table->string('telefono');
-                    $table->integer('flag');
-                    $table->integer('id');
+                    $table->string('dni');
+                    $table->integer('telefono');
                 });
 
               	Excel::load(public_path()."/csv/".$name, function($reader) use ($nametb, $namedb) {
 
                		foreach ($reader->get() as $asterisk) {
 
-                        $campa = DB::insert('insert into '.$namedb.".".$nametb.' ("cod_cliente", "telefono", "flag","id") values (?, ?, ?, ?)',["$asterisk->cod_cliente", "$asterisk->telefono", "$asterisk->flag", "$asterisk->id"]);
+                        $campa = DB::insert('insert into '.$namedb.".".$nametb.' ("dni", "telefono") values (?, ?)',["$asterisk->dni", "$asterisk->telefono"]);
                 		}
                 });
               	return redirect()->route('lista');

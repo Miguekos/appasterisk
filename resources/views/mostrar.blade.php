@@ -8,20 +8,16 @@
                 <table class="table">
                     <thead>
                     <tr>
-                        <th>Codigo del Clienge</th>
+                        <th>DNI</th>
                         <th>Telefono</th>
-                        <th>Flag</th>
-                        <th>ID</th>
                         <th class="text-center">Accion</th>
                     </tr>
                     </thead>
                     <tbody>
                     @foreach($lista as $listas)
                         <tr>
-                            <th>{{ $listas->cod_cliente }}</th>
+                            <th>{{ $listas->dni }}</th>
                             <th>{{ $listas->telefono }}</th>
-                            <th>{{ $listas->flag }}</th>
-                            <th>{{ $listas->id }}</th>
                             <th class="text-center">
                                 <a class="btn btn-sm btn-warning" href="">Iniciar</a>
                                 <a class="btn btn-sm btn-info" href="">Detener</a>
