@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+    <style>
+        .minusc{
+            text-transform: lowercase;
+        }
+    </style>
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -26,7 +31,7 @@
                         @endif
 
                         <label for="">Nombre de la campaña</label>
-                        <input type="text" autofocus name="namedb" class="form-control">
+                        <input type="text" autofocus name="namedb" class="form-control minusc">
 
                         <label for="">Subir Campaña</label>
                         <input type="file" name="archivo" class="form-control">
@@ -40,5 +45,4 @@
         </div>
     </div>
 </div>
-
 @endsection

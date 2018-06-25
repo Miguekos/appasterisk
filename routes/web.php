@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 $router->post('import', 'ImportController@import')->name('import');

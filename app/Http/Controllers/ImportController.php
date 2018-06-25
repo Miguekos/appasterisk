@@ -15,6 +15,11 @@ use Illuminate\Support\Facades\DB;
 
 class ImportController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function import(Request $request)
     {
         if ($request->hasFile('archivo')){
@@ -29,13 +34,16 @@ class ImportController extends Controller
 
             if ($validator->passes()) {
 
+                $namedb1 = mb_strtolower($request->namedb);
                 $campa = new Campa;
-                $campa->namedb = $request->namedb;
+                $campa->namedb = $namedb1;
                 $campa->archivo = $name;
                 $campa->save();
 
                 $namedb = $request->get("namedb");
                 $nametb = $request->get("namedb");
+                $namedb = mb_strtolower($namedb);
+                $nametb = mb_strtolower($namedb);
 
                 PGSchema::create($schemaName = $namedb, $databaseName = null);
                 Schema::create($namedb.".".$nametb, function (Blueprint $table) {
